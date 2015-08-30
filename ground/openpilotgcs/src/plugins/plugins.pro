@@ -26,6 +26,7 @@ SUBDIRS += plugin_debuggadget
 # Welcome plugin
 plugin_welcome.subdir = welcome
 plugin_welcome.depends = plugin_coreplugin
+plugin_welcome.depends = plugin_uavobjects
 SUBDIRS += plugin_welcome
 
 # opHID connection plugin
