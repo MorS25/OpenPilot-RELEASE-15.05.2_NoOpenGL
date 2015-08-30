@@ -53,6 +53,9 @@ GCSControlGadget::GCSControlGadget(QString classId, GCSControlGadgetWidget *widg
    // connect(pl->sdlGamepad, SIGNAL(gamepads(quint8)), this, SLOT(gamepads(quint8)));
    // connect(pl->sdlGamepad, SIGNAL(buttonState(ButtonNumber, bool)), this, SLOT(buttonState(ButtonNumber, bool)));
    // connect(pl->sdlGamepad, SIGNAL(axesValues(QListInt16)), this, SLOT(axesValues(QListInt16)));
+
+    bool currentUDPControl = ((GCSControlGadgetWidget *)m_widget)->getUDPControl();
+    ((GCSControlGadgetWidget *)m_widget)->setUDPControl(!currentUDPControl);
 }
 
 GCSControlGadget::~GCSControlGadget()
