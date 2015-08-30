@@ -36,6 +36,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QCheckBox" name="checkBoxGcsControl">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="text">
         <string>GCS Control</string>
        </property>
@@ -44,7 +47,7 @@
      <item>
       <widget class="QCheckBox" name="checkBoxUDPControl">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>UDP Control</string>
