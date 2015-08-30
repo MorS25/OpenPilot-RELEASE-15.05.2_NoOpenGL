@@ -5,7 +5,6 @@ QT += gui \
     network \
     xml \
     svg \
-    opengl \
     qml quick \
     widgets
 
@@ -52,7 +51,6 @@ SOURCES += reloadpromptutils.cpp \
 	homelocationutil.cpp \
     mytabbedstackwidget.cpp \
     mytabwidget.cpp \
-    cachedsvgitem.cpp \
     svgimageprovider.cpp \
     hostosinfo.cpp \
     logfile.cpp \
@@ -112,7 +110,6 @@ HEADERS += utils_global.h \
 	homelocationutil.h \
     mytabbedstackwidget.h \
     mytabwidget.h \
-    cachedsvgitem.h \
     svgimageprovider.h \
     hostosinfo.h \
     logfile.h \

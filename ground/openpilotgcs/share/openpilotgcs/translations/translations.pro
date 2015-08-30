@@ -3,7 +3,7 @@ include(../../../openpilotgcs.pri)
 # Commented languages with outdated translations
 # Allow removing the 'C' language in default config files at first start.
 # Need to be uncommented for update in all languages files (make ts)
-LANGUAGES = fr zh_CN # de es ru
+LANGUAGES = #fr zh_CN # de es ru
 
 # var, prepend, append
 defineReplace(prependAll) {
@@ -11,10 +11,10 @@ defineReplace(prependAll) {
     return($$result)
 }
 
-XMLPATTERNS = $$[QT_INSTALL_BINS]/xmlpatterns
-LUPDATE = $$[QT_INSTALL_BINS]/lupdate -locations relative -no-ui-lines -no-sort
-LRELEASE = $$[QT_INSTALL_BINS]/lrelease
-LCONVERT = $$[QT_INSTALL_BINS]/lconvert
+XMLPATTERNS = /usr/bin//xmlpatterns
+LUPDATE = /usr/bin/lupdate -locations relative -no-ui-lines -no-sort
+LRELEASE = /usr/bin/lrelease
+LCONVERT = /usr/bin/lconvert
 
 TRANSLATIONS = $$prependAll(LANGUAGES, $$PWD/openpilotgcs_,.ts)
 

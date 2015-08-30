@@ -2,7 +2,7 @@ TEMPLATE = lib
 TARGET = Config
 DEFINES += CONFIG_LIBRARY
 
-QT += svg opengl qml quick
+QT += svg qml quick
 
 include(config_dependencies.pri)
 

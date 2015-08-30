@@ -1,12 +1,11 @@
 TEMPLATE = lib
 TARGET = GCSControl
 
-QT += svg opengl network
+QT += svg network
 
 include(../../openpilotgcsplugin.pri)
 include(../../plugins/coreplugin/coreplugin.pri)
 include(../../plugins/uavobjects/uavobjects.pri)
-include(../../libs/sdlgamepad/sdlgamepad.pri)
 
 HEADERS += \
     gcscontrolgadget.h \

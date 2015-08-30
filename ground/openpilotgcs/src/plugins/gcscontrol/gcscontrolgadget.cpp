@@ -50,9 +50,9 @@ GCSControlGadget::GCSControlGadget(QString classId, GCSControlGadgetWidget *widg
 
     joystickTime.start();
     GCSControlPlugin *pl = dynamic_cast<GCSControlPlugin *>(plugin);
-    connect(pl->sdlGamepad, SIGNAL(gamepads(quint8)), this, SLOT(gamepads(quint8)));
-    connect(pl->sdlGamepad, SIGNAL(buttonState(ButtonNumber, bool)), this, SLOT(buttonState(ButtonNumber, bool)));
-    connect(pl->sdlGamepad, SIGNAL(axesValues(QListInt16)), this, SLOT(axesValues(QListInt16)));
+   // connect(pl->sdlGamepad, SIGNAL(gamepads(quint8)), this, SLOT(gamepads(quint8)));
+   // connect(pl->sdlGamepad, SIGNAL(buttonState(ButtonNumber, bool)), this, SLOT(buttonState(ButtonNumber, bool)));
+   // connect(pl->sdlGamepad, SIGNAL(axesValues(QListInt16)), this, SLOT(axesValues(QListInt16)));
 }
 
 GCSControlGadget::~GCSControlGadget()
@@ -238,14 +238,6 @@ void GCSControlGadget::sticksChangedLocally(double leftX, double leftY, double r
     }
 }
 
-void GCSControlGadget::gamepads(quint8 count)
-{
-    Q_UNUSED(count);
-
-// sdlGamepad.setGamepad(0);
-// sdlGamepad.setTickRate(JOYSTICK_UPDATE_RATE);
-}
-
 void GCSControlGadget::readUDPCommand()
 {
     double pitch    = 0.0;
@@ -337,7 +329,7 @@ double GCSControlGadget::constrain(double value)
     return value;
 }
 
-void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
+void GCSControlGadget::buttonState(int number, bool pressed)
 {
     if ((buttonSettings[number].ActionID > 0) && (buttonSettings[number].FunctionID > 0) && (pressed)) { // this button is configured
         ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
@@ -418,68 +410,6 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
     // buttonSettings[number].ActionID NIDT
     // buttonSettings[number].FunctionID -RPYTAC
     // buttonSettings[number].Amount
-}
-
-void GCSControlGadget::axesValues(QListInt16 values)
-{
-    int chMax = values.length();
-
-    if (rollChannel >= chMax || pitchChannel >= chMax ||
-        yawChannel >= chMax || throttleChannel >= chMax) {
-        qDebug() << "GCSControl: configuration is inconsistent with current joystick! Aborting update.";
-        return;
-    }
-
-    double rValue = (rollChannel > -1) ? values[rollChannel] : 0;
-    double pValue = (pitchChannel > -1) ? values[pitchChannel] : 0;
-    double yValue = (yawChannel > -1) ? values[yawChannel] : 0;
-    double tValue = (throttleChannel > -1) ? values[throttleChannel] : 0;
-    double max    = 32767;
-
-    if (rollChannel > -1) {
-        if (channelReverse[rollChannel] == true) {
-            rValue = -rValue;
-        }
-    }
-    if (pitchChannel > -1) {
-        if (channelReverse[pitchChannel] == true) {
-            pValue = -pValue;
-        }
-    }
-    if (yawChannel > -1) {
-        if (channelReverse[yawChannel] == true) {
-            yValue = -yValue;
-        }
-    }
-    if (throttleChannel > -1) {
-        if (channelReverse[throttleChannel] == true) {
-            tValue = -tValue;
-        }
-    }
-
-
-    if (joystickTime.elapsed() > JOYSTICK_UPDATE_RATE) {
-        joystickTime.restart();
-        // Remap RPYT to left X/Y and right X/Y depending on mode
-        // Mode 1: LeftX = Yaw, LeftY = Pitch, RightX = Roll, RightY = Throttle
-        // Mode 2: LeftX = Yaw, LeftY = THrottle, RightX = Roll, RightY = Pitch
-        // Mode 3: LeftX = Roll, LeftY = Pitch, RightX = Yaw, RightY = Throttle
-        // Mode 4: LeftX = Roll, LeftY = Throttle, RightX = Yaw, RightY = Pitch;
-        switch (controlsMode) {
-        case 1:
-            sticksChangedLocally(yValue / max, -pValue / max, rValue / max, -tValue / max);
-            break;
-        case 2:
-            sticksChangedLocally(yValue / max, -tValue / max, rValue / max, -pValue / max);
-            break;
-        case 3:
-            sticksChangedLocally(rValue / max, -pValue / max, yValue / max, -tValue / max);
-            break;
-        case 4:
-            sticksChangedLocally(rValue / max, -tValue / max, yValue / max, -pValue / max);
-            break;
-        }
-    }
 }
 
 

@@ -9,9 +9,7 @@ TEMPLATE = app
 DESTDIR = ../build
 QT += network
 QT += sql
-QT += opengl
 LIBS += -L../build \
-    -lopmapwidgetd
 SOURCES += main.cpp\
         mainwindow.cpp
 

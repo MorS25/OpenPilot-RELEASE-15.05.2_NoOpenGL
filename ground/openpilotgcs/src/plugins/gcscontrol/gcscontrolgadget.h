@@ -31,7 +31,6 @@
 #include <coreplugin/iuavgadget.h>
 #include "manualcontrolcommand.h"
 #include "gcscontrolgadgetconfiguration.h"
-#include "sdlgamepad/sdlgamepad.h"
 #include <QTime>
 #include "gcscontrolplugin.h"
 #include <QUdpSocket>
@@ -96,9 +95,9 @@ protected slots:
     void readUDPCommand();
 
     // signals from joystick
-    void gamepads(quint8 count);
-    void buttonState(ButtonNumber number, bool pressed);
-    void axesValues(QListInt16 values);
+//    void gamepads(quint8 count);
+    void buttonState(int number, bool pressed);
+//    void axesValues(QListInt16 values);
 };
 
 

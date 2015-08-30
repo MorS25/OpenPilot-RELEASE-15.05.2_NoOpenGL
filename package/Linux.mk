@@ -83,6 +83,7 @@ datadir := $(prefix)/share
 INSTALL = cp -a --no-preserve=ownership
 LN = ln
 LN_S = ln -s
+DESTDIR = /
 
 .PHONY: install
 install:
@@ -94,7 +95,6 @@ install:
 	$(V1) $(MKDIR) -p $(DESTDIR)$(datadir)/pixmaps
 	$(V1) $(MKDIR) -p $(DESTDIR)$(udevdir)
 	$(V1) $(INSTALL) $(BUILD_DIR)/openpilotgcs_$(GCS_BUILD_CONF)/bin/openpilotgcs $(DESTDIR)$(bindir)
-	$(V1) $(INSTALL) $(BUILD_DIR)/openpilotgcs_$(GCS_BUILD_CONF)/bin/udp_test $(DESTDIR)$(bindir)
 	$(V1) $(INSTALL) $(BUILD_DIR)/openpilotgcs_$(GCS_BUILD_CONF)/lib/openpilotgcs $(DESTDIR)$(libdir)
 	$(V1) $(INSTALL) $(BUILD_DIR)/openpilotgcs_$(GCS_BUILD_CONF)/share/openpilotgcs $(DESTDIR)$(datadir)
 	$(V1) $(INSTALL) $(ROOT_DIR)/package/linux/openpilot.desktop $(DESTDIR)$(datadir)/applications

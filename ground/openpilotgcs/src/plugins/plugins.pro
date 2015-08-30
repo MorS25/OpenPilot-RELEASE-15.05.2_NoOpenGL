@@ -56,14 +56,6 @@ plugin_telemetry.depends = plugin_coreplugin
 plugin_telemetry.depends += plugin_uavobjectutil
 plugin_telemetry.depends += plugin_uavtalk
 
-# OPMap UAVGadget
-plugin_opmap.subdir = opmap
-plugin_opmap.depends = plugin_coreplugin
-plugin_opmap.depends += plugin_uavobjects
-plugin_opmap.depends += plugin_uavobjectutil
-plugin_opmap.depends += plugin_uavtalk
-SUBDIRS += plugin_opmap
-
 # Scope UAVGadget
 plugin_scope.subdir = scope
 plugin_scope.depends = plugin_coreplugin
@@ -76,12 +68,6 @@ plugin_uavobjectbrowser.subdir = uavobjectbrowser
 plugin_uavobjectbrowser.depends = plugin_coreplugin
 plugin_uavobjectbrowser.depends += plugin_uavobjects
 SUBDIRS += plugin_uavobjectbrowser
-
-# ModelView UAVGadget
-plugin_modelview.subdir = modelview
-plugin_modelview.depends = plugin_coreplugin
-plugin_modelview.depends += plugin_uavobjects
-SUBDIRS += plugin_modelview
 
 #Qt 4.8.0 / phonon may crash on Mac, fixed in Qt 4.8.1, QTBUG-23128
 macx:contains(QT_VERSION, ^4\\.8\\.0): CONFIG += disable_notify_plugin
@@ -103,18 +89,6 @@ plugin_uploader.depends += plugin_uavobjectutil
 plugin_uploader.depends += plugin_uavtalk
 plugin_uploader.depends += plugin_opHID
 SUBDIRS += plugin_uploader
-
-# Dial gadget
-plugin_dial.subdir = dial
-plugin_dial.depends = plugin_coreplugin
-plugin_dial.depends += plugin_uavobjects
-SUBDIRS += plugin_dial
-
-# Linear Dial gadget
-plugin_lineardial.subdir = lineardial
-plugin_lineardial.depends = plugin_coreplugin
-plugin_lineardial.depends += plugin_uavobjects
-SUBDIRS += plugin_lineardial
 
 # System Health gadget
 plugin_systemhealth.subdir = systemhealth
@@ -139,35 +113,16 @@ plugin_gpsdisplay.depends = plugin_coreplugin
 plugin_gpsdisplay.depends += plugin_uavobjects
 SUBDIRS += plugin_gpsdisplay
 
-# QML viewer gadget
-plugin_qmlview.subdir = qmlview
-plugin_qmlview.depends = plugin_coreplugin
-plugin_qmlview.depends += plugin_uavobjects
-SUBDIRS += plugin_qmlview
-
 # PathAction Editor gadget
 plugin_pathactioneditor.subdir = pathactioneditor
 plugin_pathactioneditor.depends = plugin_coreplugin
 plugin_pathactioneditor.depends += plugin_uavobjects
 SUBDIRS += plugin_pathactioneditor
 
-# Primary Flight Display (PFD) gadget
-plugin_pfdqml.subdir = pfdqml
-plugin_pfdqml.depends = plugin_coreplugin
-plugin_pfdqml.depends += plugin_uavobjects
-SUBDIRS += plugin_pfdqml
-
 # IP connection plugin
 plugin_ipconnection.subdir = ipconnection
 plugin_ipconnection.depends = plugin_coreplugin
 SUBDIRS += plugin_ipconnection
-
-#HITL Simulation gadget
-plugin_hitl.subdir = hitl
-plugin_hitl.depends = plugin_coreplugin
-plugin_hitl.depends += plugin_uavobjects
-plugin_hitl.depends += plugin_uavtalk
-SUBDIRS += plugin_hitl
 
 # Export and Import GCS Configuration
 plugin_importexport.subdir = importexport
@@ -205,15 +160,6 @@ plugin_uavobjectutil.subdir = uavobjectutil
 plugin_uavobjectutil.depends = plugin_coreplugin
 plugin_uavobjectutil.depends += plugin_uavobjects
 SUBDIRS += plugin_uavobjectutil
-
-# OSG Earth View plugin
-OSG {
-    plugin_osgearthview.subdir = osgearthview
-    plugin_osgearthview.depends = plugin_coreplugin
-    plugin_osgearthview.depends += plugin_uavobjects
-    plugin_osgearthview.depends += plugin_uavobjectwidgetutils
-    SUBDIRS += plugin_osgearthview
-}
 
 # Magic Waypoint gadget
 plugin_magicwaypoint.subdir = magicwaypoint

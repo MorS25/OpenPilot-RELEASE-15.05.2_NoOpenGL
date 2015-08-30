@@ -1808,68 +1808,6 @@
         </data>
       </Danker__PCT__27s__PCT__20Quad>
     </ModelViewGadget>
-    <OPMapGadget>
-      <Google__PCT__20Sat>
-        <configInfo>
-          <locked>false</locked>
-          <version>0.0.0</version>
-        </configInfo>
-        <data>
-          <accessMode>ServerAndCache</accessMode>
-          <cacheLocation>%%STOREPATH%%mapscache/</cacheLocation>
-          <defaultLatitude>0</defaultLatitude>
-          <defaultLongitude>0</defaultLongitude>
-          <defaultZoom>2</defaultZoom>
-          <mapProvider>GoogleSatellite</mapProvider>
-          <maxUpdateRate>2000</maxUpdateRate>
-          <overlayOpacity>1</overlayOpacity>
-          <showTileGridLines>false</showTileGridLines>
-          <uavSymbol>mapquad.png</uavSymbol>
-          <useMemoryCache>true</useMemoryCache>
-          <useOpenGL>false</useOpenGL>
-        </data>
-      </Google__PCT__20Sat>
-      <Memory__PCT__20Only>
-        <configInfo>
-          <locked>false</locked>
-          <version>0.0.0</version>
-        </configInfo>
-        <data>
-          <accessMode>CacheOnly</accessMode>
-          <cacheLocation>%%STOREPATH%%mapscache/</cacheLocation>
-          <defaultLatitude>0</defaultLatitude>
-          <defaultLongitude>0</defaultLongitude>
-          <defaultZoom>2</defaultZoom>
-          <mapProvider>GoogleMap</mapProvider>
-          <maxUpdateRate>2000</maxUpdateRate>
-          <overlayOpacity>1</overlayOpacity>
-          <showTileGridLines>false</showTileGridLines>
-          <uavSymbol>airplanepip.png</uavSymbol>
-          <useMemoryCache>true</useMemoryCache>
-          <useOpenGL>false</useOpenGL>
-        </data>
-      </Memory__PCT__20Only>
-      <default>
-        <configInfo>
-          <locked>false</locked>
-          <version>0.0.0</version>
-        </configInfo>
-        <data>
-          <accessMode>ServerAndCache</accessMode>
-          <cacheLocation>%%STOREPATH%%mapscache/</cacheLocation>
-          <defaultLatitude>0</defaultLatitude>
-          <defaultLongitude>0</defaultLongitude>
-          <defaultZoom>2</defaultZoom>
-          <mapProvider>GoogleMap</mapProvider>
-          <maxUpdateRate>2000</maxUpdateRate>
-          <overlayOpacity>1</overlayOpacity>
-          <showTileGridLines>false</showTileGridLines>
-          <uavSymbol>mapquad.png</uavSymbol>
-          <useMemoryCache>true</useMemoryCache>
-          <useOpenGL>false</useOpenGL>
-        </data>
-      </default>
-    </OPMapGadget>    
     <PfdQmlGadget>
       <NoTerrain>
         <configInfo>
@@ -2596,13 +2534,6 @@
          <splitterSizes>@Variant(AAAACQAAAAIAAAACAAACigAAAAIAAAE0)</splitterSizes>
           <type>splitter</type>
         </side0>
-        <side1>
-          <classId>OPMapGadget</classId>
-          <gadget>
-            <activeConfiguration>Google Sat</activeConfiguration>
-          </gadget>
-          <type>uavGadget</type>
-        </side1>
         <splitterOrientation>1</splitterOrientation>
         <splitterSizes>@Variant(AAAACQAAAAIAAAACAAADXwAAAAIAAAQc)</splitterSizes>
         <type>splitter</type>

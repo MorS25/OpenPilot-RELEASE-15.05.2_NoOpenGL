@@ -80,13 +80,13 @@ SANITIZE_DEPRECATED_VARS := USE_BOOTLOADER CLEAN_BUILD
 $(foreach var, $(SANITIZE_DEPRECATED_VARS), $(eval $(call SANITIZE_VAR,$(var),deprecated)))
 
 # Make sure this isn't being run as root unless installing (no whoami on Windows, but that is ok here)
-ifeq ($(shell whoami 2>/dev/null),root)
-    ifeq ($(filter install,$(MAKECMDGOALS)),)
-        ifndef FAKEROOTKEY
-            $(error You should not be running this as root)
-        endif
-    endif
-endif
+#ifeq ($(shell whoami 2>/dev/null),root)
+ #   ifeq ($(filter install,$(MAKECMDGOALS)),)
+  #      ifndef FAKEROOTKEY
+   #         $(error You should not be running this as root)
+    #    endif
+    #endif
+#endif
 
 # Decide on a verbosity level based on the V= parameter
 export AT := @
@@ -260,7 +260,6 @@ $(1): fw_$(1)_opfw
 fw_$(1): fw_$(1)_opfw
 
 fw_$(1)_%: uavobjects_flight
-	$(V1) $$(ARM_GCC_VERSION_CHECK_TEMPLATE)
 	$(V1) $(MKDIR) -p $(BUILD_DIR)/fw_$(1)/dep
 	$(V1) cd $(ROOT_DIR)/flight/targets/boards/$(1)/firmware && \
 		$$(MAKE) -r --no-print-directory \
@@ -287,7 +286,6 @@ bl_$(1): bl_$(1)_bin
 bl_$(1)_bino: bl_$(1)_bin
 
 bl_$(1)_%:
-	$(V1) $$(ARM_GCC_VERSION_CHECK_TEMPLATE)
 	$(V1) $(MKDIR) -p $(BUILD_DIR)/bl_$(1)/dep
 	$(V1) cd $(ROOT_DIR)/flight/targets/boards/$(1)/bootloader && \
 		$$(MAKE) -r --no-print-directory \

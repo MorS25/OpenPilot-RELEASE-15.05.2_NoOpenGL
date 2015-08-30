@@ -39,67 +39,10 @@ GCSControlGadgetOptionsPage::GCSControlGadgetOptionsPage(GCSControlGadgetConfigu
 {
     options_page = NULL;
 
-    sdlGamepad   = dynamic_cast<GCSControlPlugin *>(parent)->sdlGamepad;
 }
 
 GCSControlGadgetOptionsPage::~GCSControlGadgetOptionsPage()
 {}
-
-
-void GCSControlGadgetOptionsPage::buttonState(ButtonNumber number, bool pressed)
-{
-    if (options_page) {
-        QList<QCheckBox *> rbList;
-        rbList << options_page->buttonInput0 <<
-            options_page->buttonInput1 << options_page->buttonInput2 <<
-            options_page->buttonInput3 << options_page->buttonInput4 <<
-            options_page->buttonInput5 << options_page->buttonInput6 <<
-            options_page->buttonInput7;
-
-        if (number < 8) { // We only support 8 buttons
-            rbList.at(number)->setChecked(pressed);
-        }
-    }
-}
-
-void GCSControlGadgetOptionsPage::gamepads(quint8 count)
-{
-    Q_UNUSED(count);
-
-    /*options_page->AvailableControllerList->clear();
-       for (int i=0;i<count;i++)
-       {
-       options_page->AvailableControllerList->addItem(QString().sprintf("%d",i));//SDL_JoystickName(i));
-       }*/
-}
-
-void GCSControlGadgetOptionsPage::axesValues(QListInt16 values)
-{
-    if (options_page) {
-        QList<QProgressBar *> pbList;
-        pbList << options_page->joyCh0 <<
-            options_page->joyCh1 << options_page->joyCh2 <<
-            options_page->joyCh3 << options_page->joyCh4 <<
-            options_page->joyCh5 << options_page->joyCh6 <<
-            options_page->joyCh7;
-        int i = 0;
-        foreach(qint16 value, values) {
-            if (i > 7) {
-                break; // We only support 7 channels
-            }
-            if (chRevList.at(i)->isChecked() == 1) {
-                value = 65535 - value;
-            }
-            if (pbList.at(i)->minimum() > value) {
-                pbList.at(i)->setMinimum(value);
-            }
-            if (pbList.at(i)->maximum() < value) {
-                pbList.at(i)->setMaximum(value);
-            }
-            pbList.at(i++)->setValue(value);
-        }
-    }
-}
 
 
 // creates options page widget (uses the UI file)
@@ -209,9 +152,9 @@ QWidget *GCSControlGadgetOptionsPage::createPage(QWidget *parent)
         chRevList.at(i)->setChecked(qlChRev.at(i));;
     }
 
-    connect(sdlGamepad, SIGNAL(axesValues(QListInt16)), this, SLOT(axesValues(QListInt16)));
-    connect(sdlGamepad, SIGNAL(buttonState(ButtonNumber, bool)), this, SLOT(buttonState(ButtonNumber, bool)));
-    connect(sdlGamepad, SIGNAL(gamepads(quint8)), this, SLOT(gamepads(quint8)));
+//    connect(sdlGamepad, SIGNAL(axesValues(QListInt16)), this, SLOT(axesValues(QListInt16)));
+//    connect(sdlGamepad, SIGNAL(buttonState(ButtonNumber, bool)), this, SLOT(buttonState(ButtonNumber, bool)));
+//    connect(sdlGamepad, SIGNAL(gamepads(quint8)), this, SLOT(gamepads(quint8)));
 
     return optionsPageWidget;
 }
@@ -280,7 +223,7 @@ void GCSControlGadgetOptionsPage::apply()
 
 void GCSControlGadgetOptionsPage::finish()
 {
-    disconnect(sdlGamepad, 0, this, 0);
+//    disconnect(sdlGamepad, 0, this, 0);
     delete options_page;
     options_page = NULL;
 }
