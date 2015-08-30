@@ -4,10 +4,13 @@ QT += network qml quick
 
 include(../../openpilotgcsplugin.pri)
 include(welcome_dependencies.pri)
+include(../../plugins/coreplugin/coreplugin.pri)
+include(../../plugins/uavobjects/uavobjects.pri)
 
 HEADERS += welcomeplugin.h \
     welcomemode.h \
-    welcome_global.h
+    welcome_global.h 
+
 SOURCES += welcomeplugin.cpp \
     welcomemode.cpp \
 

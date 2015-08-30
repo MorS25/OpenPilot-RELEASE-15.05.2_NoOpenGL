@@ -29,6 +29,8 @@
 
 #include "welcomemode.h"
 #include <extensionsystem/pluginmanager.h>
+#include "uavobjectmanager.h"
+#include "uavobject.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/coreconstants.h>
@@ -94,6 +96,26 @@ WelcomeMode::WelcomeMode() :
         // No network, can delete this now as we don't need it.
         delete networkAccessManager;
     }
+
+    // Make sure we force GCS control
+    ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
+    UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
+    UAVDataObject *manualControlCommand = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("ManualControlCommand")));
+    UAVDataObject *accessoryDesired     = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("AccessoryDesired"), 0));
+
+    UAVObject::Metadata mdata = manualControlCommand->getMetadata();
+    qDebug() << "Forcing GCSControl inside of Welcome Screen";
+    UAVObject::Metadata mccInitialData;
+    mccInitialData = mdata;
+    UAVObject::SetFlightAccess(mdata, UAVObject::ACCESS_READONLY);
+    UAVObject::SetFlightTelemetryUpdateMode(mdata, UAVObject::UPDATEMODE_MANUAL);
+    UAVObject::SetGcsTelemetryAcked(mdata, false);
+    UAVObject::SetGcsTelemetryUpdateMode(mdata, UAVObject::UPDATEMODE_PERIODIC);
+    mdata.gcsTelemetryUpdatePeriod = 100;
+
+    manualControlCommand->setMetadata(mdata);
+    accessoryDesired->setMetadata(mdata);
+
 }
 
 WelcomeMode::~WelcomeMode()
