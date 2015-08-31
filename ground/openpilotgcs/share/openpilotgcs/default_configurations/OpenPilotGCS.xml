@@ -2761,7 +2761,7 @@
   </UAVGadgetManager>
   <Workspace>
     <AllowTabBarMovement>false</AllowTabBarMovement>
-    <Icon1>:/core/images/ah.png</Icon1>
+    <Icon1>:/core/images/bridge.png</Icon1>
     <Icon10>:/core/images/openpilot_logo_64.png</Icon10>
     <Icon2>:/core/images/config.png</Icon2>
     <Icon3>:/core/images/cog.png</Icon3>
@@ -2771,9 +2771,9 @@
     <Icon7>:/core/images/openpilot_logo_64.png</Icon7>
     <Icon8>:/core/images/openpilot_logo_64.png</Icon8>
     <Icon9>:/core/images/openpilot_logo_64.png</Icon9>
-    <NumberOfWorkspaces>6</NumberOfWorkspaces>
+    <NumberOfWorkspaces>1</NumberOfWorkspaces>
     <TabBarPlacementIndex>1</TabBarPlacementIndex>
-    <Workspace1>Flight data</Workspace1>
+    <Workspace1>UDPBridge</Workspace1>
     <Workspace10>Workspace10</Workspace10>
     <Workspace2>Configuration</Workspace2>
     <Workspace3>System</Workspace3>
