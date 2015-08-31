@@ -56,6 +56,7 @@
 #include <QQmlContext>
 
 #include <cstdlib>
+#include <QProcess>
 
 using namespace ExtensionSystem;
 using namespace Utils;
@@ -116,6 +117,14 @@ WelcomeMode::WelcomeMode() :
     manualControlCommand->setMetadata(mdata);
     accessoryDesired->setMetadata(mdata);
 
+    QStringList list;
+    list.clear();
+    QProcess * exec;
+    exec =new QProcess(this);
+    list <<"PATH=/usr/bin/:/bin/:/opt/:/opt/p/:";
+    exec->setEnvironment(list);
+    exec->setProcessChannelMode(QProcess::ForwardedChannels );
+    exec->start("/usr/bin/python", QStringList() << "/root/Artoo_RC_Stick_proxy.py");
 }
 
 WelcomeMode::~WelcomeMode()
