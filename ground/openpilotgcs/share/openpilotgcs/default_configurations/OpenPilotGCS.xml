@@ -140,7 +140,7 @@
           <channel5Reverse>false</channel5Reverse>
           <channel6Reverse>false</channel6Reverse>
           <channel7Reverse>false</channel7Reverse>
-          <controlHostUDP>127.0.0.1</controlHostUDP>
+          <controlHostUDP>0.0.0.0</controlHostUDP>
           <controlPortUDP>2323</controlPortUDP>
           <controlsMode>2</controlsMode>
           <pitchChannel>1</pitchChannel>
